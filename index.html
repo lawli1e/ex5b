@@ -46,15 +46,9 @@
 					return;
 			   }
 		}
-		
-	    $(document).ready(function(){
-			$("button").click(function(){
-			   var t = $('#temp').val();//celsius
-			   var u = $('#unit').val();
-			   
-			vAlidate(t);
-			   
-			   var t1;
+
+		function cAlculate (t,u) {
+			var t1;
 			   var u1;
 			   
 			   if(u == "F"){
@@ -69,6 +63,16 @@
 			   }
 			   
 			   alert("Temperature is "+t1+" in "+u1);
+
+		}
+
+	    $(document).ready(function(){
+			$("button").click(function(){
+			   var t = $('#temp').val();//celsius
+			   var u = $('#unit').val();
+			   
+			vAlidate(t);
+			cAlculate(t,u);
 			});
 		});
 	</script>
