@@ -30,11 +30,13 @@
 		</form>
 	</div>
 	<div id="result" style="margin-top:10px;margin-left:10px; font-size: 20px; color:red;">
+	
 	</div>
 	
 	<script>
 
-		function vAlidate (t){
+		function vAlidate (t,u){
+
 			if(isNaN(t)){
 					msg = "Please verify whether the temperature value is correct!!!";
 					alert(msg);
@@ -45,9 +47,15 @@
 					alert(msg);
 					return;
 			   }
+			   if(!(t <= -100 && t >= 100)){
+				cAlculate(t,u);
+			   }
+
+
 		}
 
 		function cAlculate (t,u) {
+
 			var t1;
 			   var u1;
 			   
@@ -61,20 +69,24 @@
 					t1 = t * (4/5);
 					u1 = "Kelvin";
 			   }
-			   
-			   alert("Temperature is "+t1+" in "+u1);
+			   let ele = document.getElementById('result')
+			   ele.innerHTML = "Temperature is "+t1+" in "+u1;
 
 		}
 
 	    $(document).ready(function(){
 			$("button").click(function(){
+
 			   var t = $('#temp').val();//celsius
 			   var u = $('#unit').val();
 			   
-			vAlidate(t);
-			cAlculate(t,u);
+			vAlidate(t,u);
+			
+			
+
 			});
 		});
+		
 	</script>
 </body>
 </html>
